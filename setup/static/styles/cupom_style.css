@@ -1,0 +1,61 @@
+body {
+    background-image: url("images/fundo.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+main {
+    background-color: rgba(255, 255, 255, 0.938);
+    width: 1500px;
+    padding: 10px;
+    box-shadow: 5px 5px 15px rgb(255, 166, 0);
+    margin: auto;
+    border-radius: 10px;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    background-color: rgb(255, 166, 0);
+    border: 1px solid #000000;
+}
+
+.msg {
+    color: red;
+    text-align: center;
+}
+
+.excel-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 4px solid #dcdcdc;
+}
+
+.excel-table th, .excel-table td {
+    border: 4px solid #00000079;
+    padding: 5px;
+}
+
+.excel-table th {
+    background-color: #f2f2f2;
+}
+
+.botao {
+    text-decoration: none;
+    color: white;
+}
+
+.botao:hover {
+    color: white;
+}
+
+.label {
+    color:#000000; 
+    margin-bottom: 5px;
+}

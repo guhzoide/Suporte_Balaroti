@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/styles/programas_style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Desativa programas</title>
+</head>
+<body>
+    <main>
+        <div class="botoes">
+            <a href="{% url 'verificaProgramas' %}" class="funcao btn btn-success">Verificar programas</a>
+            <a href="{% url 'desativatudo' %}" class="funcao btn btn-danger">Reiniciar programas</a>
+            <a href="{% url 'index' %}" class="funcao btn btn-primary">Voltar</a>
+        </div>
+
+        <p class="msg">{{ msg }}</p>
+
+        <hr>
+        <h2>Verificaprog1</h2>
+        <hr>
+        {% for info in dados %}
+            <p class="lojas">{{ info }}</p>
+        {% endfor %}
+
+    </main>
+    <script>
+        window.history.pushState('Object', 'Categoria JavaScript', '/desativa_programas');
+    </script>
+</body>
+</html>

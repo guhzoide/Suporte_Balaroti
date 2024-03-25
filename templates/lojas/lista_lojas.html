@@ -1,0 +1,32 @@
+{% extends "lojas/base.html" %}
+{% load static %}
+{% block content %}
+        <table class="excel-table">
+            <tr>
+                <th>Número da loja</th>
+                <th>Loja</th>
+                <th>Região</th>
+                <th>CD</th>
+                <th>Categoria</th>
+                <th>localização</th>
+                <th>Cnpj</th>
+                <th>Tronco</th>
+            </tr>
+            {% for loja in lojas %}
+                <tr>
+                    <td>{{ loja.numero }}</td>
+                    <td>{{ loja.loja }}</td>
+                    <td>{{ loja.regiao }}</td>
+                    <td>{{ loja.cd }}</td>
+                    <td>{{ loja.categoria }}</td>
+                    <td>{{ loja.localizacao }}</td>
+                    <td>{{ loja.cnpj }}</td>
+                    <td>{{ loja.tronco }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <hr>
+        <a class="btn btn-primary" href="{% url 'lojas' %}">Voltar</a>
+{% endblock %}
+</body>
+</html>

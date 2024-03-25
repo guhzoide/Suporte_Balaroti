@@ -1,0 +1,7 @@
+{% load static %}
+<div class="search">
+    <label for="data-search" class="pesquisa">Pesquisar host:</label>
+    <input type="text" id="data-search" name="data-search" placeholder="">
+    <a onclick="searchData()"><button  class="btn btn-primary">Pesquisar</button></a>
+    <a href="{% url 'lojas' %}" class="btn btn-primary">Voltar</a>
+</div>

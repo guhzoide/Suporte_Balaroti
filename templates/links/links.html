@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/styles/lista_lojas_style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Lista lojas</title>
+</head>
+</head>
+    <main>        
+        <h1>Links</h1>
+        <hr>
+        <a href="{% url 'index' %}" class="botao btn btn-primary"><i class="bi bi-box-arrow-left"></i></a>
+        <div class="search">
+            <label for="data-search" class="pesquisa">Pesquisar nome:</label>
+            <input type="text" id="data-search" name="data-search" placeholder="">
+            <a onclick="searchData()"><button  class="btn btn-primary">Pesquisar</button></a>
+        </div>
+        <table class="excel-table">
+            <tr>
+                <th>Nome</th>
+                <th>Link</th>
+                <th>Senha</th>
+            </tr>
+            {% for link in links %}
+                <tr>
+                    <td><a href="{{ link.link }}" target="_blank">{{ link.nome }}</a></td>
+                    <td>{{ link.usuario }}</td>
+                    <td>{{ link.senha }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <hr>
+    </main>
+    <script>
+        function searchData() {
+            var input = document.getElementById("data-search");
+            var filter = input.value.toUpperCase();
+            var table = document.querySelector(".excel-table");
+            var tr = table.getElementsByTagName("tr");
+
+            for (var i = 0; i < tr.length; i++) {
+                var td = tr[i].getElementsByTagName("td")[0];
+
+                if (td) {
+                    var txtValue = td.textContent || td.innerText;
+
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+<body>
+</body>
+</html>

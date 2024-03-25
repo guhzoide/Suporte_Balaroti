@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 10px;
+    background-image: url("images/fundo.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+span {
+    text-align: center;
+}
+
+
+h1, h2{
+    text-align: center;
+    text-decoration: underline;
+}
+
+main {
+    background-color: rgba(255, 255, 255, 0.938);
+    box-shadow: 5px 5px 15px rgb(255, 166, 0);
+    border-radius: 10px;
+}
+
+.msg {
+    font-size: 20px;
+    color: red;
+    text-align: center;
+}
+
+.botoes {
+    display: flex;
+    cursor: pointer; 
+    text-align: center;
+    justify-content: center;
+}
+
+.funcao {
+    margin: 10px;
+    font-size: 50px;
+}
+
+.lojas {
+    padding: 10px;
+    font-size: 15px;
+}

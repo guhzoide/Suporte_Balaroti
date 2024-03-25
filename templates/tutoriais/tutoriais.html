@@ -1,0 +1,40 @@
+{% extends "tutoriais/base.html" %}
+{% load static %}
+{% block content %}
+</head>
+    <main>        
+        <h1>Tutoriais</h1>
+        <hr>
+        <div class="search">
+            <a href="{% url 'index' %}" class="botao btn btn-primary"><i class="bi bi-box-arrow-left"></i></a>
+            <input type="text" id="data-search" name="data-search" placeholder="Pesquisar tutorial" class="input-pesquisa">
+        </div>
+        <hr>
+        <div class="container_tutorial">
+            {% for tutorial in tutoriais %}
+                <a href="{% url 'visualizar' tutorial.id %}" class="tutorial">{{ tutorial.titulo }}</a></li>
+            {% endfor %}
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('data-search').addEventListener('input', function() {
+                var input = this.value.toLowerCase();
+                var tutoriais = document.querySelectorAll('.container_tutorial .tutorial');
+
+                tutoriais.forEach(function(tutorial) {
+                    var tutorialTitle = tutorial.textContent.toLowerCase();
+                    
+                    if (tutorialTitle.includes(input)) {
+                        tutorial.style.display = '';
+                    } else {
+                        tutorial.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+<body>
+</body>
+</html>
+{% endblock %}

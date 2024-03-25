@@ -1,0 +1,21 @@
+{% extends "tutoriais/base.html" %}
+{% load static %}
+{% block content %}
+<style>
+    .line {
+        white-space: pre-wrap; /* Isso preserva os espaços em branco */
+    }
+</style>
+<body>
+    <main>
+        <h1>Tutorial</h1>
+        <a href="{% url 'tutoriais' %}" class="botao btn btn-primary"><i class="bi bi-box-arrow-left"></i></a>
+        <div>
+            {% for line in texto %}
+            <span class="line">{{ line }}</span>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>
+{% endblock %}

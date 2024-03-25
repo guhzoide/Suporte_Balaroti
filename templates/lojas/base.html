@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/styles/lista_lojas_style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Lista lojas</title>
+</head>
+</head>
+    <main>        
+        <h1>Lojas</h1>
+        <hr>
+        {% include 'lojas/partials/__pesquisa.html' %}
+        <hr>
+        {% block content %}{% endblock %}
+    </main>
+    <script>
+        function searchData() {
+            var input = document.getElementById("data-search");
+            var filter = input.value.toUpperCase();
+            var table = document.querySelector(".excel-table");
+            var tr = table.getElementsByTagName("tr");
+
+            for (var i = 0; i < tr.length; i++) {
+                var td = tr[i].getElementsByTagName("td")[1];
+
+                if (td) {
+                    var txtValue = td.textContent || td.innerText;
+
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+<body>
+</body>
+</html>

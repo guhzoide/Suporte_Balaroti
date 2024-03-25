@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    background-color: rgb(255, 166, 0);
+    border: 1px solid #000000;
+}
+
+body {
+    background-image: url("images/fundo.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+main {
+    background-color: rgba(255, 255, 255, 0.938);
+    width: 1500px;
+    padding: 10px;
+    box-shadow: 5px 5px 15px rgb(255, 166, 0);
+    margin: auto;
+    border-radius: 10px;
+}
+
+.tutorial {
+    margin: 10px;
+    text-decoration: none;
+    color: #000000;
+}
+
+.botao {
+    margin-right: 550px;
+}
+
+.input-pesquisa {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 2px 2px 15px rgb(0, 0, 0);
+    padding: 15px;
+    font-size: 20px;
+    width: 300px;
+}
+
+.container_tutorial {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
