@@ -10,11 +10,11 @@ def programas(request):
     
     valor = status.objects.filter(status_atual=True)
     if valor:
-        msg = 'Atenção!! Já existe um processo em execução.'
-        return render(request, 'programas/programas.html', {"msg": msg})
+        messages.error(request, "Atenção!! Já existe um processo em execução.")
+        return render(request, 'programas/programas.html')
     
-    msg =''
-    return render(request, 'programas/programas.html', {"msg": msg})
+
+    return render(request, 'programas/programas.html')
 
 def verificaProgramas(request):
     if not request.user.is_authenticated:

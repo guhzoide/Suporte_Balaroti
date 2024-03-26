@@ -33,11 +33,7 @@
                     <div class="col-12 col-lg-12">
                         <button type="submit" class="botao btn btn-success col-12">Logar</button>
                     </div>
-                    {% for message in messages %}
-                    <div class="alerta">
-                        <p id="messages">{{ message }}</p>
-                    </div>
-                    {% endfor %}
+                    {% include 'partials/__alertas.html' %}
                 </form>
             </section>
         </div>

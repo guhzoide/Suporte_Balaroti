@@ -1,0 +1,9 @@
+{% load static %}
+<link rel="stylesheet" href="{% static '/styles/alertas_style.css' %}">
+{% if messages %}
+    {% for message in messages %}
+        <div class="ajuste-alerta alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}

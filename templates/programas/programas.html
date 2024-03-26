@@ -16,7 +16,7 @@
             <a href="{% url 'index' %}" class="funcao btn btn-primary">Voltar</a>
         </div>
 
-        <p class="msg">{{ msg }}</p>
+        <div class="div-alerta">{% include 'partials/__alertas.html' %}</div>
 
         <hr>
         <h2>Verificaprog1</h2>
@@ -24,7 +24,6 @@
         {% for info in dados %}
             <p class="lojas">{{ info }}</p>
         {% endfor %}
-
     </main>
     <script>
         window.history.pushState('Object', 'Categoria JavaScript', '/desativa_programas');

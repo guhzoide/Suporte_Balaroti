@@ -1,0 +1,8 @@
+.div-alerta{
+    display: flex;
+    justify-content: center;
+}
+
+.ajuste-alerta {
+    font-size: 15px;
+}
