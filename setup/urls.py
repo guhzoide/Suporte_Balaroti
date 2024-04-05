@@ -3,11 +3,11 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('home.urls')),
-    path('', include('cupom.urls')),
-    path('', include('programas.urls')),
-    path('', include('lojas.urls')),
-    path('', include('links.urls')),
-    path('', include('tutoriais.urls')),
-    path('', include('usuarios.urls')),
+    path('', include('apps.home.urls')),
+    path('', include('apps.cupom.urls')),
+    path('', include('apps.programas.urls')),
+    path('', include('apps.lojas.urls')),
+    path('', include('apps.links.urls')),
+    path('', include('apps.tutoriais.urls')),
+    path('', include('apps.usuarios.urls')),
 ]

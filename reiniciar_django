@@ -1,9 +1,0 @@
-#!/bin/bash
-
-kill -9 `ps -ef|grep 8000 | grep -v grep | awk '{ print $2 }'`;
-
-cd /srv/balarotigpt/suporte/
-source venv/bin/activate
-nohup python3 manage.py runserver suportebalaroti:8000 > log.django &
-
-echo "Suporte reiniciado"

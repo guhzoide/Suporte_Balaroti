@@ -40,13 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home.apps.HomeConfig',
-    'cupom.apps.CupomConfig',
-    'programas.apps.ProgramasConfig',
-    'lojas.apps.LojasConfig',
-    'links.apps.LinksConfig',
-    'tutoriais.apps.TutoriaisConfig',
-    'usuarios.apps.UsuariosConfig'
+    'apps.home.apps.HomeConfig',
+    'apps.cupom.apps.CupomConfig',
+    'apps.programas.apps.ProgramasConfig',
+    'apps.lojas.apps.LojasConfig',
+    'apps.links.apps.LinksConfig',
+    'apps.tutoriais.apps.TutoriaisConfig',
+    'apps.usuarios.apps.UsuariosConfig'
 ]
 
 MIDDLEWARE = [

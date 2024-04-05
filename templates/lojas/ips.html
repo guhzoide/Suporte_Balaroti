@@ -1,0 +1,21 @@
+{% extends "lojas/base.html" %}
+{% load static %}
+{% block content %}
+<table class="excel-table">
+    <p>{{ file }}</p>
+    <tr>
+        <th>Número loja</th>
+        <th>Loja</th>
+        <th>IP</th>
+    </tr>
+    {% for dado in dados %}
+        <tr>
+            <td> {{ dado.numero }} </td>
+            <td>{{ dado.loja }}</td>
+            <td>{{ dado.ip }}</td>
+        </tr>
+    {% endfor %}
+</table>
+<hr>
+<a href="{% url 'lojas' %}"><button class="botao btn btn-primary">Voltar</button></a>
+{% endblock %}

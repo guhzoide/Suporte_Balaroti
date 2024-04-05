@@ -32,9 +32,6 @@ main {
     border-radius: 10px;
 }
 
-a {
-    padding: 30px;
-}
 
 .pesquisa, #data-search {
     font-size: 25px;
@@ -60,6 +57,16 @@ a {
     background-color: #f2f2f2;
 }
 
+/* menu links */
+
+.link {
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+    color: blue;
+}
 
 /* menu lojas */
 

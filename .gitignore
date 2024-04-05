@@ -169,8 +169,7 @@ log
 log.django
 
 # Py and shell's
-atualiza_host
-atualiza_host.py
+iniciar_django
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can

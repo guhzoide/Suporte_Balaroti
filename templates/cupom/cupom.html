@@ -26,12 +26,9 @@
             <a href="{% url 'consultaMovimento' %}" class="botao btn btn-primary">Pendentes</a>
         </form>
 
-        <p class="msg">{{ msg }}</p>
+        <div class="div-alerta">{% include 'partials/__alertas.html' %}</div>
 
         <p>Cupons encontrados: {{ quantidade }}</p>       
-        <p>1 -> processo pendente</p>
-        <p>5 -> Processo finalizado</p>
-
         <table class="excel-table">
             <tr>
                 <th>Número cupom</th>
