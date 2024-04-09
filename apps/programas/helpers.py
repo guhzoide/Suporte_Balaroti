@@ -16,8 +16,8 @@ class helpersProgramas():
                         cnopts.hostkeys.load(hostkey_file)
 
                         with sf.Connection(address, username=username, password=password, cnopts=cnopts) as sftp:
-                            with open('log', 'a') as file:
-                                file.write(f"Verificando: {address}\n\n")
+                            with open('log', 'w') as file:
+                                file.write(f"Verificando: {address}")
                             result = str((sftp.execute("sh /etc/shell/verificaprog1")))
                             chars = "''()[],"
                             result = result.translate(str.maketrans('', '', chars))
@@ -32,8 +32,8 @@ class helpersProgramas():
                         cnopts.hostkeys.load(hostkey_file)
 
                         with sf.Connection(address, username=username, password=password, cnopts=cnopts) as sftp:
-                            with open('log', 'a') as file:
-                                file.write(f"Verificando: {address}\n\n")
+                            with open('log', 'w') as file:
+                                file.write(f"Verificando: {address}")
                             result = str((sftp.execute("sh /etc/shell/verificaprog1")))
                             chars = "''()[],"
                             result = result.translate(str.maketrans('', '', chars))
@@ -57,7 +57,7 @@ class helpersProgramas():
                 cnopts.hostkeys.load(hostkey_file)
 
                 with sf.Connection(address, username=username, password=password, cnopts=cnopts) as sftp:
-                    with open('log', 'a') as file:
+                    with open('log', 'w') as file:
                         file.write(f"Desativando: {address}\n")
                     result = sftp.execute("sh /etc/shell/desativatudo && sh /etc/shell/ativtudo")
                     
@@ -69,7 +69,7 @@ class helpersProgramas():
                 cnopts.hostkeys.load(hostkey_file)
 
                 with sf.Connection(address, username=username, password=password, cnopts=cnopts) as sftp:
-                    with open('log', 'a') as file:
+                    with open('log', 'w') as file:
                         file.write(f"Desativando: {address}\n")
                     result = sftp.execute("sh /etc/shell/desativatudo && sh /etc/shell/ativtudo")
                     dados.append(result)
@@ -82,11 +82,13 @@ class helpersProgramas():
             thread.join(tempo_limite)
             if thread.is_alive():
                 with open('log', 'a') as file:
-                    file.write(f"Loja {address} finalizada\n\n")
+                    file.write(f"Loja {address} finalizada")
                 raise TimeoutError(f"Loja {address} finalizada\n")
             
         with open('bin/listalojas', 'r') as file: 
             for line in file:
+                if 'sjdep' or 'cascd' or 'loncd' in line:
+                    pass
                 address = line.strip()
                 try:
                     verifica_tempo_limite(address)
