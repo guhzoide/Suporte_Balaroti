@@ -22,3 +22,37 @@ class LoginForms(forms.Form):
             }
         )
     )
+
+class CompararForms(forms.Form):
+    usuario_com_lib = forms.CharField(
+        label="Usuário com liberação",
+        required=True,
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+            }
+        )
+    )
+
+    usuario_sem_lib = forms.CharField(
+        label="Usuário sem liberação",
+        required=True,
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+            }
+        )
+    )
+
+    usuario_efetua_liberacao = forms.CharField(
+        label="Sua matricula",
+        required=True,
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+            }
+        )
+    )

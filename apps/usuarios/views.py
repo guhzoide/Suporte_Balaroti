@@ -1,8 +1,21 @@
-from django.shortcuts import render, redirect
-from apps.usuarios.forms import LoginForms
-from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
+from apps.usuarios.helpers import CompararMatricula
+from apps.usuarios.forms import LoginForms, CompararForms
+
+def comparar(request):
+    form = CompararForms()
+    result = ''
+    if request.method == 'POST':
+        form = CompararForms(request.POST)
+        if form.is_valid():
+            usuario_com_lib=form['usuario_com_lib'].value()
+            usuario_sem_lib=form['usuario_sem_lib'].value()
+            usuario_efetua_liberacao=form['usuario_efetua_liberacao'].value()
+            result = CompararMatricula.comparacao(usuario_com_lib, usuario_sem_lib, usuario_efetua_liberacao)
+    return render(request, 'usuarios/comparacao.html', {"form": form, 'result': result})
 
 def login(request):
     form = LoginForms()

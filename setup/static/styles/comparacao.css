@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    justify-content: center;
+    background-image: url("images/fundo.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+main {
+    background-color: rgba(255, 255, 255, 0.938);
+    box-shadow: 5px 5px 15px rgb(255, 166, 0);
+    border-radius: 10px;
+    width: 1000px;
+    margin: 20px;
+    font-size: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.comparar {
+    margin: 10px;
+}
+
+.botao {
+    margin-top: 10px;
+}
