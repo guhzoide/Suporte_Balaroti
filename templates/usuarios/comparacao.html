@@ -27,9 +27,8 @@
                             {{ field }}
                         </div>
                         {% endfor %}
-                    </div>  
+                    </div>
                     <div class="container_botoes col-12 col-lg-12">
-                        <!-- <a href="{% url 'pesquisar' %}" class="botao btn btn-primary col-12">Pesquisar</a> -->
                         <button type="submit" class="botao btn btn-success col-12">Equiparar</button>
                     </div>
                     {% include 'partials/__alertas.html' %}
@@ -41,7 +40,7 @@
             <div class="liberacoes_realizadas">
                 <div class="oracle">
                     <h3>Acessos no oracle</h3>
-                    {% for liberacao in oracle %}
+                    {% for liberacao in perfis %}
                     <p>{{ liberacao }}</p>
                     {% endfor %}
                 </div>

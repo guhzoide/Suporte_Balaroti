@@ -13,19 +13,8 @@ def comparar(request):
             usuario_com_lib=form['usuario_com_lib'].value()
             usuario_sem_lib=form['usuario_sem_lib'].value()
             usuario_efetua_liberacao=form['usuario_efetua_liberacao'].value()
-            oracle, dbmaker, texto = CompararMatricula.comparacao(usuario_com_lib, usuario_sem_lib, usuario_efetua_liberacao)
-        return render(request, 'usuarios/comparacao.html', {"form": form, 'oracle': oracle, 'dbmaker': dbmaker, 'texto': texto})
-    return render(request, 'usuarios/comparacao.html', {"form": form})
-
-def pesquisar(request):
-    form = CompararForms()
-    if request.method == 'POST':
-        form = CompararForms(request.POST)
-        if form.is_valid():
-            usuario_com_lib=form['usuario_com_lib'].value()
-            usuario_sem_lib=form['usuario_sem_lib'].value()
-            oracle, dbmaker = CompararMatricula.pesquisarMatriculas(usuario_com_lib, usuario_sem_lib)
-            return render(request, 'usuarios/comparacao.html', {"form": form, 'oracle': oracle, 'dbmaker': dbmaker})
+            perfis, dbmaker, texto = CompararMatricula.comparacao(usuario_com_lib, usuario_sem_lib, usuario_efetua_liberacao)
+        return render(request, 'usuarios/comparacao.html', {"form": form, 'perfis': perfis, 'dbmaker': dbmaker, 'texto': texto})
     return render(request, 'usuarios/comparacao.html', {"form": form})
 
 def login(request):
