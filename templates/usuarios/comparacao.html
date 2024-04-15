@@ -37,15 +37,18 @@
                     </div>
                 </form>
             </section>
+            <div class="titulo-acesso">
+                <h1>Acessos liberados.</h1>
+            </div>
             <div class="liberacoes_realizadas">
                 <div class="oracle">
-                    <h3>Acessos no oracle</h3>
+                    <h3>Oracle</h3>
                     {% for liberacao in perfis %}
                     <p>{{ liberacao }}</p>
                     {% endfor %}
                 </div>
                 <div class="dbmaker">
-                    <h3>Acessos no dbmaker</h3>
+                    <h3>Dbmaker</h3>
                     {% for liberacao in dbmaker %}
                     <p>{{ liberacao }}</p>
                     {% endfor %}

@@ -21,7 +21,7 @@ def ipCameras(request):
         return redirect('login')
     
     cameras = cadastroCameras.objects.order_by("numero").filter(publicada=True)
-    return render(request, 'lojas/ips.html', {"dados": cameras})
+    return render(request, 'lojas/ips_camera.html', {"dados": cameras})
 
 def ipEtiquetas(request):
     if not request.user.is_authenticated:
@@ -29,4 +29,4 @@ def ipEtiquetas(request):
         return redirect('login')
     
     etiquetas = cadastroEtiquetas.objects.order_by("numero").filter(publicada=True)
-    return render(request, 'lojas/ips.html', {"dados": etiquetas})
+    return render(request, 'lojas/ips_etiqueta.html', {"dados": etiquetas})

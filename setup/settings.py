@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path, os
 from dotenv import load_dotenv
+from lib.banco import NOME_POSTGRES, USUARIO_POSTGRES , SENHA_POSTGRES, HOST_POSTGRES, PORT_POSTGRES
 
 load_dotenv()
 
@@ -85,8 +86,12 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': NOME_POSTGRES,
+        'USER': USUARIO_POSTGRES,
+        'PASSWORD': SENHA_POSTGRES,
+        'HOST': HOST_POSTGRES,
+        'PORT': PORT_POSTGRES,
     }
 }
 

@@ -6,6 +6,10 @@ from apps.usuarios.helpers import CompararMatricula
 from apps.usuarios.forms import LoginForms, CompararForms
 
 def comparar(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Usuário não logado")
+        return redirect('login')
+    
     form = CompararForms()
     if request.method == 'POST':
         form = CompararForms(request.POST)

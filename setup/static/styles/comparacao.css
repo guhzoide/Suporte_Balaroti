@@ -16,9 +16,9 @@ main {
     font-size: 20px;
 }
 
-.container {
+.titulo-acesso {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
 }
 
 .comparar {
