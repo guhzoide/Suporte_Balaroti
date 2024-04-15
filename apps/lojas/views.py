@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from apps.lojas.models import cadastroLojas, cadastroCameras, cadastroEtiquetas
+from apps.lojas.models import cadastroLojas, cadastroCameras
 
 def lojas(request):
     if not request.user.is_authenticated:
@@ -22,11 +22,3 @@ def ipCameras(request):
     
     cameras = cadastroCameras.objects.order_by("numero").filter(publicada=True)
     return render(request, 'lojas/ips_camera.html', {"dados": cameras})
-
-def ipEtiquetas(request):
-    if not request.user.is_authenticated:
-        messages.error(request, "Usuário não logado")
-        return redirect('login')
-    
-    etiquetas = cadastroEtiquetas.objects.order_by("numero").filter(publicada=True)
-    return render(request, 'lojas/ips_etiqueta.html', {"dados": etiquetas})

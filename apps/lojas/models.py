@@ -1,5 +1,4 @@
 from django.db import models
-from datetime import datetime
 
 class cadastroLojas(models.Model):
     OPCOES_CATEGORIA = [
@@ -25,15 +24,6 @@ class cadastroCameras(models.Model):
     numero = models.IntegerField(null=False, blank=False)
     loja = models.CharField(max_length=5, null=False, blank=False)
     ip = models.CharField(max_length=20,null=False, blank=False)
-    publicada = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.loja
-
-class cadastroEtiquetas(models.Model):
-    numero = models.IntegerField(null=False, blank=False)
-    loja = models.CharField(max_length=5, null=False, blank=False)
-    ip_etiqueta = models.CharField(max_length=20,null=False, blank=False)
     publicada = models.BooleanField(default=False)
 
     def __str__(self):
