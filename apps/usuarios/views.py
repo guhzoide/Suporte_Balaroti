@@ -2,8 +2,8 @@ from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from apps.usuarios.helpers import CompararMatricula
-from apps.usuarios.forms import LoginForms, CompararForms
+from apps.usuarios.helpers import LiberarMatricula
+from apps.usuarios.forms import LoginForms, CompararForms, LiberarForms
 
 def comparar(request):
     if not request.user.is_authenticated:
@@ -17,9 +17,22 @@ def comparar(request):
             usuario_com_lib=form['usuario_com_lib'].value()
             usuario_sem_lib=form['usuario_sem_lib'].value()
             usuario_efetua_liberacao=form['usuario_efetua_liberacao'].value()
-            perfis, dbmaker, texto = CompararMatricula.comparacao(usuario_com_lib, usuario_sem_lib, usuario_efetua_liberacao)
+            perfis, dbmaker, texto = LiberarMatricula.comparacao(usuario_com_lib, usuario_sem_lib, usuario_efetua_liberacao)
         return render(request, 'usuarios/comparacao.html', {"form": form, 'perfis': perfis, 'dbmaker': dbmaker, 'texto': texto})
     return render(request, 'usuarios/comparacao.html', {"form": form})
+
+def liberar(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Usuário não logado")
+        return redirect('login')
+    
+    form = LiberarForms()
+    if request.method == 'POST':
+        form = LiberarForms(request.POST)
+        if form.is_valid():
+            usuario_lib=form['usuario_lib'].value()
+            usuario_efetua_liberacao=form['usuario_efetua_liberacao'].value()
+            texto = LiberarMatricula.liberar(usuario_lib, usuario_efetua_liberacao)
 
 def login(request):
     form = LoginForms()

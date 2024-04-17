@@ -1,7 +1,8 @@
 import pyodbc
 import cx_Oracle
+from lib.banco import DB_CONFIG
 
-class CompararMatricula():
+class LiberarMatricula():
     def comparacao(usuario_com_lib, usuario_sem_lib, usuario_efetua_liberacao):
 
         # Listas do DBMTRIZ
@@ -15,12 +16,7 @@ class CompararMatricula():
         oracle = []
 
         # Configurações do oracle
-        db_config = {
-            'user': 'aplicacao',
-            'password': '@@aplicacao#$',
-            'dsn': 'oracle-scan:1521/DBERP'
-        }
-
+        db_config = DB_CONFIG
 
         # Conexão e equiparação no BDMTRIZ
         conn = pyodbc.connect('DSN=BDMTRIZ')
@@ -136,3 +132,21 @@ class CompararMatricula():
         connection.commit()
         connection.close()
         return perfis, dbmaker, texto
+    
+    def liberar(usuario_lib, usuario_efetua_liberacao):
+        try:
+            db_config = DB_CONFIG
+            conn = pyodbc.connect('DSN=BDMTRIZ')
+            cur = conn.cursor()
+            cur.execute(f"insert into SYSADM.USPERMIS (USP_IDUSUARIO, USP_ACESSO, USP_TIPO) values ({usuario_lib}, '{liberar_triz}', '');")
+            cursor.execute(f"INSERT INTO USUARIO_PERFIL (ID_USUARIO, CD_PERFIL, CD_USUARIO, DT_ATUALIZACAO) VALUES ({usuario_lib}, '{liberar_oracle}', {usuario_efetua_liberacao}, '')")
+            connection = cx_Oracle.connect(**db_config)
+            cursor = connection.cursor()
+            connection.commit()
+            connection.close()
+            
+            texto = f"Acessos liberados"
+            return texto
+        except Exception as error:
+            texto = f"Ocorreu um erro ao liberar:\n {error}"
+            return texto
