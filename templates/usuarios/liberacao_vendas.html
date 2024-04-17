@@ -1,0 +1,28 @@
+{% extends "usuarios/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <section class="comparar">
+        <a href="{% url 'liberacoes' %}" class="botao btn btn-primary"><i class="bi bi-box-arrow-left"></i></a>
+        <h1>Acesso vendedores</h1>
+        <form action="{% url 'liberarVendas' %}" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                {% for field in form.visible_fields %}
+                <div class="col-12 col-lg-12">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="container_botoes col-12 col-lg-12">
+                <button type="submit" class="botao btn btn-success col-12">Liberar</button>
+            </div>
+            {% include 'partials/__alertas.html' %}
+            <div class="texto">
+                <p>{{ texto }}</p>
+            </div>
+        </form>
+    </section>
+</div>
+{% endblock %}

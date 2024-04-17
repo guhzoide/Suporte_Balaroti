@@ -134,18 +134,43 @@ class LiberarMatricula():
         return perfis, dbmaker, texto
     
     def liberar(usuario_lib, usuario_efetua_liberacao):
-        try:
-            db_config = DB_CONFIG
-            conn = pyodbc.connect('DSN=BDMTRIZ')
-            cur = conn.cursor()
-            cur.execute(f"insert into SYSADM.USPERMIS (USP_IDUSUARIO, USP_ACESSO, USP_TIPO) values ({usuario_lib}, '{liberar_triz}', '');")
-            cursor.execute(f"INSERT INTO USUARIO_PERFIL (ID_USUARIO, CD_PERFIL, CD_USUARIO, DT_ATUALIZACAO) VALUES ({usuario_lib}, '{liberar_oracle}', {usuario_efetua_liberacao}, '')")
-            connection = cx_Oracle.connect(**db_config)
-            cursor = connection.cursor()
-            connection.commit()
-            connection.close()
+        try:          
+            try:
+                conn = pyodbc.connect('DSN=BDMTRIZ')
+                cur = conn.cursor()
+                cur.execute(f"insert into SYSADM.USPERMIS (USP_IDUSUARIO, USP_ACESSO, USP_TIPO) values ({usuario_lib}, 'Vendas Master', '');")
+                cur.commit()
+                cur.close()
+            except:
+                pass
+
+            try:
+                conn = pyodbc.connect('DSN=DBSJOSE; UID=sysadm')
+                cur = conn.cursor()
+                cur.execute(f"insert into SYSADM.USPERMIS (USP_IDUSUARIO, USP_ACESSO, USP_TIPO) values ({usuario_lib}, 'Vendas Master', '');")
+                cur.commit()
+                cur.close()
+            except:
+                pass
             
-            texto = f"Acessos liberados"
+            try:
+                db_config = DB_CONFIG
+                connection = cx_Oracle.connect(**db_config)
+                cursor = connection.cursor()
+                cursor.execute(f"INSERT INTO USUARIO_PERFIL (ID_USUARIO, CD_PERFIL, CD_USUARIO, DT_ATUALIZACAO) VALUES ({usuario_lib}, '032', {usuario_efetua_liberacao}, '')")
+                cursor.execute(f"INSERT INTO USUARIO_PERFIL (ID_USUARIO, CD_PERFIL, CD_USUARIO, DT_ATUALIZACAO) VALUES ({usuario_lib}, '023', {usuario_efetua_liberacao}, '')")
+                loja = cursor.execute(f"SELECT US_LOJA FROM APLICACAO.USUARIO WHERE US_IDUSUARIO = {usuario_lib}")
+                loja = str(loja.fetchall())
+
+                chars = "\''()[],"
+                loja = loja.translate(str.maketrans('', '', chars))
+
+                connection.commit()
+                connection.close()
+            except:
+                pass
+
+            texto = f"Acessos liberados, rode o enviausuario para a loja {loja}\n"
             return texto
         except Exception as error:
             texto = f"Ocorreu um erro ao liberar:\n {error}"

@@ -5,6 +5,9 @@ from django.shortcuts import render, redirect
 from apps.usuarios.helpers import LiberarMatricula
 from apps.usuarios.forms import LoginForms, CompararForms, LiberarForms
 
+def liberacoes(request):
+    return render(request, "usuarios/liberacoes.html")
+
 def comparar(request):
     if not request.user.is_authenticated:
         messages.error(request, "Usuário não logado")
@@ -21,7 +24,7 @@ def comparar(request):
         return render(request, 'usuarios/comparacao.html', {"form": form, 'perfis': perfis, 'dbmaker': dbmaker, 'texto': texto})
     return render(request, 'usuarios/comparacao.html', {"form": form})
 
-def liberar(request):
+def liberarVendas(request):
     if not request.user.is_authenticated:
         messages.error(request, "Usuário não logado")
         return redirect('login')
@@ -33,6 +36,8 @@ def liberar(request):
             usuario_lib=form['usuario_lib'].value()
             usuario_efetua_liberacao=form['usuario_efetua_liberacao'].value()
             texto = LiberarMatricula.liberar(usuario_lib, usuario_efetua_liberacao)
+            return render(request, 'usuarios/liberacao_vendas.html', {"form": form, 'texto': texto})
+    return render(request, 'usuarios/liberacao_vendas.html', {"form": form})
 
 def login(request):
     form = LoginForms()

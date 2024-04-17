@@ -25,7 +25,7 @@ class LoginForms(forms.Form):
 
 class LiberarForms(forms.Form):
     usuario_lib = forms.CharField(
-        label="Usuário com liberação",
+        label="Matricula do usuário",
         required=True,
         max_length=100,
         widget=forms.TextInput(
