@@ -47,6 +47,7 @@ def login(request):
         
         if form.is_valid():
             nome=form['nome_login'].value()
+            nome = nome.lower()
             senha=form['senha'].value()
 
         usuario = auth.authenticate(

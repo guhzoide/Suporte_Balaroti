@@ -18,8 +18,6 @@ body {
 
 main {
     background-color: rgba(255, 255, 255, 0.938);
-    width: 700px;
-    height: 350px;
     padding: 10px;
     box-shadow: 5px 5px 15px rgb(255, 166, 0);
     margin: auto;
@@ -36,11 +34,6 @@ button {
     color: white;
 }
 
-button:hover{
-    background-color: #004196;
-    cursor: pointer;
-}
-
 input {
     font-size: 25px;
 }
@@ -53,6 +46,7 @@ input {
 }
 
 .logo {
+    display: block;
     justify-content: center;
     text-align: center;
     box-shadow: 5px 0px 0px rgb(235, 202, 141);
@@ -62,4 +56,15 @@ input {
     float: left;
     width: 48%; 
     margin-right: 2%; 
+}
+
+.alerta {
+    font-size: 20px;
+    color: red;
+}
+
+@media screen and (min-width: 400px) {
+    .logo, img {
+        display: none;
+    }
 }
