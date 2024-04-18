@@ -159,18 +159,19 @@ class LiberarMatricula():
                 cursor = connection.cursor()
                 cursor.execute(f"INSERT INTO USUARIO_PERFIL (ID_USUARIO, CD_PERFIL, CD_USUARIO, DT_ATUALIZACAO) VALUES ({usuario_lib}, '032', {usuario_efetua_liberacao}, '')")
                 cursor.execute(f"INSERT INTO USUARIO_PERFIL (ID_USUARIO, CD_PERFIL, CD_USUARIO, DT_ATUALIZACAO) VALUES ({usuario_lib}, '023', {usuario_efetua_liberacao}, '')")
-                loja = cursor.execute(f"SELECT US_LOJA FROM APLICACAO.USUARIO WHERE US_IDUSUARIO = {usuario_lib}")
-                loja = str(loja.fetchall())
-
-                chars = "\''()[],"
-                loja = loja.translate(str.maketrans('', '', chars))
-
-                connection.commit()
-                connection.close()
             except:
-                pass
+                texto = "Usuário já possui a liberação"
+                return texto
 
-            texto = f"Acessos liberados, rode o enviausuario para a loja {loja}\n"
+            loja_vendedor = cursor.execute(f"SELECT US_LOJA FROM APLICACAO.USUARIO WHERE US_IDUSUARIO = {usuario_lib}")
+            loja_vendedor = str(loja_vendedor.fetchall())
+
+            chars = "\''()[],"
+            loja_vendedor = loja_vendedor.translate(str.maketrans('', '', chars))
+
+            connection.commit()
+            connection.close()
+            texto = f"Acessos liberados, rode o enviausuario para a loja {loja_vendedor}\n"
             return texto
         except Exception as error:
             texto = f"Ocorreu um erro ao liberar:\n {error}"

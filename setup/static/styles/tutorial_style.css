@@ -12,20 +12,15 @@ h1 {
 }
 
 body {
+    padding: 10px;
     background-image: url("images/fundo.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
 }
 
 main {
     background-color: rgba(255, 255, 255, 0.938);
-    width: 1500px;
     padding: 10px;
     box-shadow: 5px 5px 15px rgb(255, 166, 0);
     margin: auto;
@@ -42,8 +37,16 @@ main {
     margin-right: 550px;
 }
 
+.search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .input-pesquisa {
     border-radius: 10px;
+    text-align: center;
     border: none;
     box-shadow: 2px 2px 15px rgb(0, 0, 0);
     padding: 15px;
@@ -55,4 +58,5 @@ main {
     display: flex;
     flex-direction: column;
     text-align: center;
+    font-size: 20px;
 }
