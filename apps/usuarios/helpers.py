@@ -153,15 +153,16 @@ class LiberarMatricula():
             except:
                 pass
             
-            try:
-                db_config = DB_CONFIG
-                connection = cx_Oracle.connect(**db_config)
-                cursor = connection.cursor()
-                cursor.execute(f"INSERT INTO USUARIO_PERFIL (ID_USUARIO, CD_PERFIL, CD_USUARIO, DT_ATUALIZACAO) VALUES ({usuario_lib}, '032', {usuario_efetua_liberacao}, '')")
-                cursor.execute(f"INSERT INTO USUARIO_PERFIL (ID_USUARIO, CD_PERFIL, CD_USUARIO, DT_ATUALIZACAO) VALUES ({usuario_lib}, '023', {usuario_efetua_liberacao}, '')")
-            except:
-                texto = "Usuário já possui a liberação"
-                return texto
+            db_config = DB_CONFIG
+            connection = cx_Oracle.connect(**db_config)
+            cursor = connection.cursor()
+            liberacoes = ['032', '023']
+
+            for liberacao in liberacoes:
+                try:
+                    cursor.execute(f"INSERT INTO USUARIO_PERFIL (ID_USUARIO, CD_PERFIL, CD_USUARIO, DT_ATUALIZACAO) VALUES ({usuario_lib}, '{liberacao}', {usuario_efetua_liberacao}, '')")
+                except:
+                    pass
 
             loja_vendedor = cursor.execute(f"SELECT US_LOJA FROM APLICACAO.USUARIO WHERE US_IDUSUARIO = {usuario_lib}")
             loja_vendedor = str(loja_vendedor.fetchall())
