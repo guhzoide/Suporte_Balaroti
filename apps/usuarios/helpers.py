@@ -1,6 +1,12 @@
 import pyodbc
+import requests
 import cx_Oracle
-from lib.banco import DB_CONFIG
+import smtplib
+import pysftp as sf
+from lib.banco import PASSWORD_SERVER_LOWER, SERVER_USER, SERVIDOR_EMAIL_VENDAS
+from lib.banco import DB_CONFIG, EMAIL, SENHA_EMAIL
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 class LiberarMatricula():
     def comparacao(usuario_com_lib, usuario_sem_lib, usuario_efetua_liberacao):
@@ -177,3 +183,182 @@ class LiberarMatricula():
         except Exception as error:
             texto = f"Ocorreu um erro ao liberar:\n {error}"
             return texto
+
+    def criarEmailZimbra(email, senha, acesso, nome):
+        if acesso == 'Gestao':
+            pass
+
+        else:
+            #try:
+            address = SERVIDOR_EMAIL_VENDAS
+            username = SERVER_USER
+            password = 'rt9jkb43'
+            hostkey_file = 'bin/known_hosts'
+            cnopts = sf.CnOpts()
+            cnopts.hostkeys.load(hostkey_file)
+
+            with sf.Connection(address, username=username, password=password, cnopts=cnopts) as sftp:
+                result = sftp.execute(f"/opt/zimbra/bin/zmprov ca {email} {senha} displayName '{nome}'")
+                print(result)
+            # except Exception as error:
+            #     print(f"Erro e-mail: {str(error)}")
+                    
+
+    def gerenteContaOmni(nome, email, matricula, senha, descricao_vendedor, codigo_vendedor, descricao_gestao, codigo_gestao):
+        url = "https://user-api.omni.chat/v1/users"
+
+        payload = {
+        "configuration": {
+            "stickerSendingDisabled": True,
+            "cannotStartConversation": False,
+            "multipleRecipientsDisabled": True
+        },
+
+        "supervisedTeams":[
+            {
+                "id": f"{codigo_vendedor}",
+                "name": f"{descricao_vendedor}"
+            }
+        ],
+        "supervisedTeams":[
+            {
+                "id": f"{codigo_gestao}",
+                "name": f"{descricao_gestao}"
+            }
+        ],
+
+        "teams":[
+            {
+                "id": f"{codigo_gestao}",
+                "name": f"{descricao_gestao}"
+            }
+        ],
+
+        "name": f"{nome}",
+        "username": f"{email}",
+        "password": f"{senha}",
+        "salesPersonCode": f"{matricula}",
+        "roles": ["service", "supervisor"]
+        }
+        headers = {
+        "accept": "application/json",
+        "content-type": "application/json",
+        "x-api-key": "PQRBLpZj2U7P97QrIQrTu7uukbVhkVZu2S0mppWd",
+        "x-api-secret": "r:7a2fb21821337f4c8d3f15a471030b2e"
+        }
+
+        # email_servidor = "mx.balaroti.com.br"
+        # porta = 465
+        # usuario = EMAIL
+        # senha_email_envio = SENHA_EMAIL
+
+        # de =usuario
+        # para = email
+
+        # mensagem = MIMEMultipart()
+        # mensagem["From"] = de
+        # mensagem["To"] = para
+        # mensagem["Subject"] = "OmniChat"
+
+        # corpo = f"Olá, segue e-mail e senha para acesso ao OmniChat:\n{email}\n{senha}"
+        # mensagem.attach(MIMEText(corpo, "plain"))
+
+        # try:
+        #     servidor_smtp = smtplib.SMTP_SSL(email_servidor, porta)
+        #     servidor_smtp.login(usuario, senha_email_envio)
+        #     servidor_smtp.sendmail(de, para, mensagem.as_string())
+
+        #     texto = "E-mail enviado com sucesso!"
+        #     servidor_smtp.quit()
+        # except Exception as error:
+        #     print(f"Erro e-mail: {error}")
+
+        # try:
+        #     conn = pyodbc.connect('DSN=BDMTRIZ')
+        #     cur = conn.cursor()
+        #     cur.execute(f"UPDATE SYSADM.USUARIO SET US_EMAIL='{email}' WHERE US_IDUSUARIO={matricula};")
+        #     cur.commit()
+        #     cur.close()
+        # except Exception as error:
+        #     print(f"Erro atualiza banco: {error}")
+
+        try:
+            result = requests.post(url, json=payload, headers=headers)
+            print(result)
+            texto = "Conta criada com sucesso"
+        except Exception as error:
+            print(f"Erro cria omni: {error}")
+
+        return texto
+
+    def vendedorContaOmni(nome, email, matricula, senha, descricao_vendedor, codigo_vendedor):
+        url = "https://user-api.omni.chat/v1/users"
+
+        payload = {
+            "configuration": {
+                "stickerSendingDisabled": True,
+                "cannotStartConversation": False,
+                "multipleRecipientsDisabled": True
+            },
+            "teams":[
+                {
+                    "id": f"{codigo_vendedor}",
+                    "name": f"{descricao_vendedor}"
+                }
+            ],
+            "name": f"{nome}",
+            "username": f"{email}",
+            "password": f"{senha}",
+            "salesPersonCode": f"{matricula}",
+            "roles": ["service"]
+        }
+        headers = {
+            "accept": "application/json",
+            "content-type": "application/json",
+            "x-api-key": "PQRBLpZj2U7P97QrIQrTu7uukbVhkVZu2S0mppWd",
+            "x-api-secret": "r:7a2fb21821337f4c8d3f15a471030b2e"
+        }
+
+        # email_servidor = "mx.balaroti.com.br"
+        # porta = 465
+        # usuario = EMAIL
+        # senha_email_envio = SENHA_EMAIL
+
+        # de =usuario
+        # para = email
+
+        # mensagem = MIMEMultipart()
+        # mensagem["From"] = de
+        # mensagem["To"] = para
+        # mensagem["Subject"] = "OmniChat"
+
+        # corpo = f"Olá, segue e-mail e senha para acesso ao OmniChat:\n{email}\n{senha}"
+        # mensagem.attach(MIMEText(corpo, "plain"))
+
+        # try:
+        #     servidor_smtp = smtplib.SMTP_SSL(email_servidor, porta)
+        #     servidor_smtp.login(usuario, senha_email_envio)
+        #     servidor_smtp.sendmail(de, para, mensagem.as_string())
+
+        #     texto = "E-mail enviado com sucesso!"
+        #     servidor_smtp.quit()
+        # except Exception as error:
+        #     print(f"Erro e-mail: {error}")
+
+        # try:
+        #     conn = pyodbc.connect('DSN=BDMTRIZ')
+        #     cur = conn.cursor()
+        #     cur.execute(f"UPDATE SYSADM.USUARIO SET US_EMAIL='{email}' WHERE US_IDUSUARIO={matricula};")
+        #     cur.commit()
+        #     cur.close()
+        # except Exception as error:
+        #     print(f"Erro atualiza banco: {error}")
+
+        try:
+            result = requests.post(url, json=payload, headers=headers)
+            print(result)
+            texto = "Conta criada com sucesso"
+        except Exception as error:
+            print(f"Erro cria omni: {error}")
+
+        return texto

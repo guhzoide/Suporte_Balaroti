@@ -13,7 +13,7 @@ class cadastroLojas(models.Model):
     cd = models.CharField(max_length=13, null=False, blank=False)
     localizacao = models.CharField(max_length=150, null=False, blank=False)
     cnpj = models.CharField(max_length=14, null=False, blank=False)
-    tronco = models.CharField(max_length=50, null=False, blank=False)
+    tronco = models.CharField(max_length=50, null=False, blank=False)   
     categoria = models.CharField(max_length=100, choices=OPCOES_CATEGORIA, default='')
     publicada = models.BooleanField(default=False)
 

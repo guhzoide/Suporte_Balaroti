@@ -6,15 +6,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     margin: 0;
 }
 
 main {
     background-color: rgba(255, 255, 255, 0.938);
+    width: 1090;
     padding: 10px;
     box-shadow: 5px 5px 15px rgb(255, 166, 0);
-    margin: auto;
+    margin: 10px;
     border-radius: 10px;
 }
 

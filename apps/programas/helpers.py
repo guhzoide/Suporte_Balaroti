@@ -1,5 +1,6 @@
 import pysftp as sf
 import threading
+from lib.banco import PASSWORD_SERVER_UPPER, PASSWORD_SERVER_LOWER, SERVER_USER
 
 class helpersProgramas():
     def verificaprog():
@@ -9,8 +10,8 @@ class helpersProgramas():
                 address = line.strip()
                 try:
                     try:
-                        username = 'root'
-                        password = 'Rt9jkb43'
+                        username = SERVER_USER
+                        password = PASSWORD_SERVER_UPPER
                         hostkey_file = 'bin/known_hosts'
                         cnopts = sf.CnOpts()
                         cnopts.hostkeys.load(hostkey_file)
@@ -25,8 +26,8 @@ class helpersProgramas():
                             dados.append(line + ': ' + result)
 
                     except Exception:
-                        username = 'root'
-                        password = 'rt9jkb43'
+                        username = SERVER_USER
+                        password = PASSWORD_SERVER_LOWER
                         hostkey_file = 'bin/known_hosts'
                         cnopts = sf.CnOpts()
                         cnopts.hostkeys.load(hostkey_file)
@@ -50,8 +51,8 @@ class helpersProgramas():
     def desativatudo():
         def desativatudo(address):
             try:
-                username = 'root'
-                password = 'Rt9jkb43'
+                username = SERVER_USER
+                password = PASSWORD_SERVER_UPPER
                 hostkey_file = 'bin/known_hosts'
                 cnopts = sf.CnOpts()
                 cnopts.hostkeys.load(hostkey_file)
@@ -62,8 +63,8 @@ class helpersProgramas():
                     result = sftp.execute("sh /etc/shell/desativatudo && sh /etc/shell/ativtudo")
                     
             except Exception:
-                username = 'root'
-                password = 'rt9jkb43'
+                username = SERVER_USER
+                password = PASSWORD_SERVER_LOWER
                 hostkey_file = 'bin/known_hosts'
                 cnopts = sf.CnOpts()
                 cnopts.hostkeys.load(hostkey_file)

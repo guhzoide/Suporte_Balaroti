@@ -79,3 +79,50 @@ class CompararForms(forms.Form):
             }
         )
     )
+
+class ContaOmniForms(forms.Form):
+    CHOICES = (('Vendedor', 'Vendedor'),('Gestao', 'Gestao'),)
+    acesso = forms.ChoiceField(choices=CHOICES)
+
+    loja = forms.CharField(
+        label="Loja",
+        required=True,
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+            }
+        )
+    )
+
+    nome = forms.CharField(
+        label="Nome",
+        required=True,
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+            }
+        )
+    )
+
+    email = forms.CharField(
+        label="E-mail",
+        required=True,
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+            }
+        )
+    )
+
+    matricula = forms.IntegerField(
+        label="Matricula",
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+            }
+        )
+    )

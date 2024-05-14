@@ -22,7 +22,7 @@ def verificaProgramas(request):
         return redirect('login')
 
     valor = status.objects.filter(status_atual=True)
-    if valor == True:
+    if valor:
         return redirect('programas')
 
     status.objects.update(status_atual=True)
@@ -36,7 +36,7 @@ def desativatudo(request):
         return redirect('login')
 
     valor = status.objects.filter(status_atual=True)
-    if valor == True:
+    if valor:
         return redirect('programas')
 
     status.objects.update(status_atual=True)
