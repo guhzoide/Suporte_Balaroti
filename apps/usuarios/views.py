@@ -64,12 +64,10 @@ def contaOmni(request):
                     descricao_gestao = line.descricao
                     codigo_gestao = line.codigo
                 
-                print(f"Gestao:\n\n{descricao_gestao}\n{codigo_gestao}\n")
                 dados = cadastroCodigoOmni.objects.filter(numero=loja, acesso='VENDEDOR')
                 for line in dados:
                     descricao_vendedor = line.descricao
                     codigo_vendedor = line.codigo
-                print(f"Vendedor:\n\n{descricao_vendedor}\n{codigo_vendedor}\n")
                 texto = LiberarMatricula.gerenteContaOmni(nome, email, matricula, senha, descricao_vendedor, codigo_vendedor, descricao_gestao, codigo_gestao)
 
             else:
@@ -78,7 +76,6 @@ def contaOmni(request):
                     print(line)
                     descricao_vendedor = line.descricao
                     codigo_vendedor = line.codigo 
-                print(f"Vendedor - apenas:\n\n{descricao_vendedor}\n{codigo_vendedor}\n")
                 texto = LiberarMatricula.vendedorContaOmni(nome, email, matricula, senha, descricao_vendedor, codigo_vendedor)
         return render(request, 'usuarios/contaOmni.html', {"form": form, "texto": texto})
     return render(request, 'usuarios/contaOmni.html', {"form": form})

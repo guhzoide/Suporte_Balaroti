@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'apps.lojas.apps.LojasConfig',
     'apps.links.apps.LinksConfig',
     'apps.tutoriais.apps.TutoriaisConfig',
-    'apps.usuarios.apps.UsuariosConfig'
+    'apps.usuarios.apps.UsuariosConfig',
 ]
 
 MIDDLEWARE = [

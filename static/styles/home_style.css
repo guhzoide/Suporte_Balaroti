@@ -42,7 +42,6 @@ main {
     transition: .2s;
     box-shadow: 3px 0 0 rgb(255, 166, 0);
     background-color: #2A3495;
-    border-radius: 10px;
 }
 
 .menu-lateral:hover{

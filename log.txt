@@ -1,2 +1,0 @@
-Erro sjose: ('23000', '[23000] [DBMaker] unique key violation : INDEX ID 0.1263.25 (401) (SQLExecDirectW)')
-Erro sjose: ('23000', '[23000] [DBMaker] unique key violation : INDEX ID 0.1263.25 (401) (SQLExecDirectW)')
