@@ -24,10 +24,9 @@ class LoginForms(forms.Form):
     )
 
 class LiberarForms(forms.Form):
-    usuario_lib = forms.CharField(
-        label="Matricula do usuário",
+    usuario_lib = forms.IntegerField(
+        label="Matrícula do usuário",
         required=True,
-        max_length=100,
         widget=forms.TextInput(
             attrs={
                 "class": "form-control",
@@ -35,10 +34,9 @@ class LiberarForms(forms.Form):
         )
     )
 
-    usuario_efetua_liberacao = forms.CharField(
-        label="Sua matricula",
+    usuario_efetua_liberacao = forms.IntegerField(
+        label="Sua matrícula",
         required=True,
-        max_length=100,
         widget=forms.TextInput(
             attrs={
                 "class": "form-control",
@@ -47,10 +45,9 @@ class LiberarForms(forms.Form):
     )
 
 class CompararForms(forms.Form):
-    usuario_com_lib = forms.CharField(
-        label="Usuário com liberação",
+    usuario_com_lib = forms.IntegerField(
+        label="Matrícula com liberação",
         required=True,
-        max_length=100,
         widget=forms.TextInput(
             attrs={
                 "class": "form-control",
@@ -58,10 +55,9 @@ class CompararForms(forms.Form):
         )
     )
 
-    usuario_sem_lib = forms.CharField(
-        label="Usuário sem liberação",
+    usuario_sem_lib = forms.IntegerField(
+        label="Matrícula sem liberação",
         required=True,
-        max_length=100,
         widget=forms.TextInput(
             attrs={
                 "class": "form-control",
@@ -69,10 +65,9 @@ class CompararForms(forms.Form):
         )
     )
 
-    usuario_efetua_liberacao = forms.CharField(
-        label="Sua matricula",
+    usuario_efetua_liberacao = forms.IntegerField(
+        label="Sua matrícula",
         required=True,
-        max_length=100,
         widget=forms.TextInput(
             attrs={
                 "class": "form-control",
@@ -118,7 +113,7 @@ class ContaOmniForms(forms.Form):
     )
 
     matricula = forms.IntegerField(
-        label="Matricula",
+        label="matrícula",
         required=True,
         widget=forms.TextInput(
             attrs={

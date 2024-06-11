@@ -45,6 +45,8 @@ def contaOmni(request):
         messages.error(request, "Usuário não logado")
         return redirect('login')
     
+    texto = ''
+
     form = ContaOmniForms()
     if request.method == 'POST':
         form = ContaOmniForms(request.POST)

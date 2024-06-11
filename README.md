@@ -20,7 +20,21 @@
 
   CONSULTA CUPOM:
   <img align="center" alt="Hugo-Shell" src="https://github.com/guhzoide/Suporte_Balaroti/blob/master/projec_images/Consulta_cupom.png">
-  
+
+
+
+  EQUIPARAR LIBERAÇÕES ENTRE MATRICULAS:
+  <img align="center" alt="Hugo-Shell" src="https://github.com/guhzoide/Suporte_Balaroti/blob/master/projec_images/equiparacao_de_matriculas.png">
+
+
+
+  LIBERAÇÃO DE ACESSO VENDAS:
+  <img align="center" alt="Hugo-Shell" src="https://github.com/guhzoide/Suporte_Balaroti/blob/master/projec_images/liberacao_vendedores.png">
+
+
+
+  CADASTRO DE CONTA NO OMNICHAT UTILIZANDO SUA API JUNTO COM CADASTRO DE E-MAIL ZIMBRA:
+  <img align="center" alt="Hugo-Shell" src="https://github.com/guhzoide/Suporte_Balaroti/blob/master/projec_images/criar_conta_omnichat.png">
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # OUTROS
   
