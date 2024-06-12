@@ -136,7 +136,7 @@ class LiberarMatricula():
 
         connection.commit()
         connection.close()
-        return perfis, dbmaker, texto
+        return perfis, oracle, dbmaker, texto
     
     def liberar(usuario_lib, usuario_efetua_liberacao):
         try:          

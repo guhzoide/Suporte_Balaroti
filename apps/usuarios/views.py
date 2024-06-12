@@ -21,8 +21,8 @@ def comparar(request):
             usuario_com_lib=form['usuario_com_lib'].value()
             usuario_sem_lib=form['usuario_sem_lib'].value()
             usuario_efetua_liberacao=form['usuario_efetua_liberacao'].value()
-            perfis, dbmaker, texto = LiberarMatricula.comparacao(usuario_com_lib, usuario_sem_lib, usuario_efetua_liberacao)
-        return render(request, 'usuarios/comparacao.html', {"form": form, 'perfis': perfis, 'dbmaker': dbmaker, 'texto': texto})
+            perfis, oracle, dbmaker, texto = LiberarMatricula.comparacao(usuario_com_lib, usuario_sem_lib, usuario_efetua_liberacao)
+        return render(request, 'usuarios/comparacao.html', {"form": form, 'perfis': perfis, 'oracle': oracle, 'dbmaker': dbmaker, 'texto': texto})
     return render(request, 'usuarios/comparacao.html', {"form": form})
 
 def liberarVendas(request):

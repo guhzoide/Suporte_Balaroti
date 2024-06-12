@@ -29,7 +29,13 @@
             </div>
             <div class="liberacoes_realizadas">
                 <div class="oracle">
-                    <h3>Oracle</h3>
+                    <h3>Códigos oracle</h3>
+                    {% for liberacao in oracle %}
+                    <p>{{ liberacao }}</p>
+                    {% endfor %}
+                </div>
+                <div class="oracle">
+                    <h3>Perfis oracle</h3>
                     {% for liberacao in perfis %}
                     <p>{{ liberacao }}</p>
                     {% endfor %}
